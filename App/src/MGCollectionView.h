@@ -38,7 +38,7 @@ typedef NSInteger MGCollectionViewDropOperation;
 @end
 */
 
-@interface MGCollectionView : NSView {
+@interface MGCollectionView : NSView <NSAnimationDelegate> {
     MGCollectionViewItem* itemPrototype;
     NSArray* content;
     NSMutableArray* _targetItems;

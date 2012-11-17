@@ -453,10 +453,10 @@ static MZPresets* sharedPresets = nil;
                 NSString* title = [NSString stringWithFormat:
                         NSLocalizedString(@"Found %d MetaX Presets", @"Found MetaX presets message box text"),
                         [mxPresets count]];
-                NSInteger returnCode = NSRunCriticalAlertPanel(title,
-                        NSLocalizedString(@"Do you wish to import them ?", @"Found MetaX presets message question"),
+                NSInteger returnCode = NSRunCriticalAlertPanel(title, @"%@",
                         NSLocalizedString(@"Import", @"Button text for presets import action"), nil,
-                        NSLocalizedString(@"Ignore", @"Button text for presets ignore action")
+                        NSLocalizedString(@"Ignore", @"Button text for presets ignore action"),
+                        NSLocalizedString(@"Do you wish to import them ?", @"Found MetaX presets message question")
                 );
                 if(returnCode == NSAlertDefaultReturn)
                 {

@@ -10,7 +10,7 @@
 #import "FilesUndoController.h"
 #import "UndoTableView.h"
 
-@interface FilesTableView : UndoTableView {
+@interface FilesTableView : UndoTableView <NSTableViewDataSource> {
     NSArrayController* filesController;
     FilesUndoController* undoController;
 }

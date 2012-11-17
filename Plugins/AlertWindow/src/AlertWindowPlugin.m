@@ -91,7 +91,8 @@
                                         "Queue completed alert message"),
                       intervalStr];
     
-    NSRunAlertPanel( title, msg, NSLocalizedString(@"OK", @"OK button text"), nil, nil);
+    NSString* OK = NSLocalizedString(@"OK", @"OK button text");
+    NSRunAlertPanel( title, msg, @"%@", nil, nil, OK);
 }
 
 @end

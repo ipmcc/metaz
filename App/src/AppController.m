@@ -48,7 +48,7 @@ NSResponder* findResponder(NSWindow* window) {
     NSResponder* oldResponder =  [window firstResponder];
     if([oldResponder isKindOfClass:[NSTextView class]] && [window fieldEditor:NO forObject:nil] != nil)
     {
-        NSResponder* delegate = [((NSTextView*)oldResponder) delegate];
+        NSResponder* delegate = (NSResponder*)[((NSTextView*)oldResponder) delegate];
         if([delegate isKindOfClass:[NSTextField class]])
             oldResponder = delegate;
     }
@@ -833,7 +833,16 @@ NSDictionary* findBinding(NSWindow* window) {
     if (returnCode == NSOKButton)
     {
         if([filesController commitEditing])
-            [[MZMetaLoader sharedLoader] loadFromFiles: [oPanel filenames]];
+        {
+            NSEnumerator* e = [[oPanel URLs] objectEnumerator];
+            NSURL* url = nil;
+            NSMutableArray* filenames = [NSMutableArray array];
+            while ((url = [e nextObject]))
+            {
+                [filenames addObject: [url path]];
+            }
+            [[MZMetaLoader sharedLoader] loadFromFiles: filenames];
+        }
     }
 }
 
@@ -945,8 +954,9 @@ NSDictionary* findBinding(NSWindow* window) {
     {
         result = NSRunCriticalAlertPanel(
             NSLocalizedString(@"Are you sure you want to quit MetaZ?", nil),
-            NSLocalizedString(@"You have files loaded with unsaved changes. Do you want to quit anyway?", nil),
-            NSLocalizedString(@"Quit", nil), NSLocalizedString(@"Don't Quit", nil), nil);
+            @"%@",
+            NSLocalizedString(@"Quit", nil), NSLocalizedString(@"Don't Quit", nil), nil,
+            NSLocalizedString(@"You have files loaded with unsaved changes. Do you want to quit anyway?", nil));
     }
     else if([[MZWriteQueue sharedQueue] status] == QueueRunning)
     {
@@ -962,8 +972,9 @@ NSDictionary* findBinding(NSWindow* window) {
     {
         result = NSRunCriticalAlertPanel(
             NSLocalizedString(@"Are you sure you want to quit MetaZ?", nil),
-            NSLocalizedString(@"There are pending jobs in your queue. Do you want to quit anyway?",nil),
-            NSLocalizedString(@"Quit", nil), NSLocalizedString(@"Don't Quit", nil), nil);
+            @"%@",
+            NSLocalizedString(@"Quit", nil), NSLocalizedString(@"Don't Quit", nil), nil,
+            NSLocalizedString(@"There are pending jobs in your queue. Do you want to quit anyway?",nil));
     }
     
     if( result == NSAlertDefaultReturn )

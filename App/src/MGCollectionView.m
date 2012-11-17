@@ -390,7 +390,7 @@
     NSAssert(count>0, @"We need colors");
     if(count == 1)
     {
-        [[colors objectAtIndex:0] set];
+        [(NSColor*)[colors objectAtIndex:0] set];
         NSRectFill([self bounds]);
         return;
     }
@@ -401,7 +401,7 @@
     {
         if(![item _isRemovalNeeded])
         {
-            [[colors objectAtIndex:coloridx] set];
+            [(NSColor*)[colors objectAtIndex:coloridx] set];
             NSRect frame = item.view.frame;
             ypos = MGFloatMax(ypos, frame.origin.y + frame.size.height);
             NSRectFill(frame);
@@ -416,7 +416,7 @@
         NSUInteger missing = (bounds.size.height - ypos) / height;
         for(NSUInteger i=0; i<missing; i++)
         {
-            [[colors objectAtIndex:coloridx] set];
+            [(NSColor*)[colors objectAtIndex:coloridx] set];
             NSRect frame = NSZeroRect;
             frame.origin.y = ypos;
             frame.size.width = bounds.size.width;
@@ -425,7 +425,7 @@
             ypos+=height;
             coloridx = (coloridx + 1) % count;
         }
-        [[colors objectAtIndex:coloridx] set];
+        [(NSColor*)[colors objectAtIndex:coloridx] set];
         NSRect frame = NSZeroRect;
         frame.origin.y = ypos;
         frame.size.width = bounds.size.width;

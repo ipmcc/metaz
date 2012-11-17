@@ -30,6 +30,7 @@
 #import "GTMDefines.h"
 #import "GTMDebugSelectorValidation.h"
 #import "GTMObjC2Runtime.h"
+#import <libkern/OSAtomic.h>
 
 // A singleton that works as a dispatch center for KVO 
 // -[NSObject observeValueForKeyPath:ofObject:change:context:] and turns them
@@ -166,8 +167,8 @@ static char* GTMKeyValueObservingHelperContext
     // and the other will set things up so that the failing thread
     // gets the shared center
     GTMKeyValueObservingCenter *newCenter = [[self alloc] init];
-    if(!objc_atomicCompareAndSwapGlobalBarrier(nil, 
-                                               newCenter, 
+    if(!OSAtomicCompareAndSwapPtrBarrier(nil, 
+                                               newCenter,
                                                (void *)&center)) {
       [newCenter release];  // COV_NF_LINE no guarantee we'll hit this line
     }

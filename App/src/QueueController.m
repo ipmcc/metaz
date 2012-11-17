@@ -220,10 +220,11 @@
         NSString* title = [NSString stringWithFormat:
                 NSLocalizedString(@"MetaZ Has Detected %d Pending Item(s) In Your Queue", @"Loaded queue message box text"),
                 count];
-        NSInteger returnCode = NSRunCriticalAlertPanel(title,
-                NSLocalizedString(@"Do you want to reload them ?", @"Loaded queue message question"),
+        NSString* alertString = NSLocalizedString(@"Do you want to reload them ?", @"Loaded queue message question");
+        NSInteger returnCode = NSRunCriticalAlertPanel(title, @"%@",
                 NSLocalizedString(@"Reload Queue", @"Button text for reload queue action"), nil,
-                NSLocalizedString(@"Empty Queue", @"Button text for empty queue action")
+                NSLocalizedString(@"Empty Queue", @"Button text for empty queue action"),
+                alertString
                 );
         if(returnCode == NSAlertOtherReturn)
             [writeQueue removeAllQueueItems];
