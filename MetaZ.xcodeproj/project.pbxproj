@@ -426,42 +426,42 @@
 			isa = PBXContainerItemProxy;
 			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 1BA325C310545ACA00276F57 /* MetaZKit */;
+			remoteGlobalIDString = 1BA325C310545ACA00276F57;
 			remoteInfo = MetaZKit;
 		};
 		1BD55F961648BB4E00F9C579 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 1B2022F810B393CA00EE548A /* Plist Marcos */;
+			remoteGlobalIDString = 1B2022F810B393CA00EE548A;
 			remoteInfo = "Plist Marcos";
 		};
 		1BD560451648CBF700F9C579 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 1BD55F8D1648BB4200F9C579 /* GrowlPlugin */;
+			remoteGlobalIDString = 1BD55F8D1648BB4200F9C579;
 			remoteInfo = GrowlPlugin;
 		};
 		1BD5620D1648F18400F9C579 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 1BA325C310545ACA00276F57 /* MetaZKit */;
+			remoteGlobalIDString = 1BA325C310545ACA00276F57;
 			remoteInfo = MetaZKit;
 		};
 		1BD5620F1648F18400F9C579 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 1B2022F810B393CA00EE548A /* Plist Marcos */;
+			remoteGlobalIDString = 1B2022F810B393CA00EE548A;
 			remoteInfo = "Plist Marcos";
 		};
 		1BD562551648F44300F9C579 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 1BD562061648F17C00F9C579 /* AlertWindowPlugin */;
+			remoteGlobalIDString = 1BD562061648F17C00F9C579;
 			remoteInfo = AlertWindowPlugin;
 		};
 		1BEA6E77106EF2B0004B1A7F /* PBXContainerItemProxy */ = {
@@ -3711,17 +3711,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = (
-					ppc,
-					"$(ARCHS_STANDARD_32_64_BIT)",
-				);
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = macosx10.5;
+				SDKROOT = macosx10.7;
 				USE_HEADERMAP = NO;
 			};
 			name = "Remote Debug";
@@ -4436,17 +4433,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = (
-					ppc,
-					"$(ARCHS_STANDARD_32_64_BIT)",
-				);
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = macosx10.5;
+				SDKROOT = macosx10.7;
 				USE_HEADERMAP = NO;
 			};
 			name = Debug;
@@ -4455,15 +4449,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = (
-					ppc,
-					"$(ARCHS_STANDARD_32_64_BIT)",
-				);
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				SDKROOT = macosx10.5;
+				SDKROOT = macosx10.7;
 				USE_HEADERMAP = NO;
 			};
 			name = Release;
