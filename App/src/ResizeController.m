@@ -12,8 +12,7 @@
 
 #pragma mark - initialization
 
-- (id)init
-{
+- (id)init {
     if ((self = [super init]))
     {
         // Read once at init time... changing this at runtime would likely be disastrous.
@@ -30,33 +29,27 @@
     [super dealloc];
 }
 
-- (NSBox*)leftSubview
-{
+- (NSBox*)leftSubview {
     return searchBoxFirst ? searchBox : filesBox;
 }
 
-- (NSTabView*)middleSubview
-{
+- (NSTabView*)middleSubview {
     return tabView;
 }
 
-- (NSBox*)rightSubview
-{
+- (NSBox*)rightSubview {
     return searchBoxFirst ? filesBox : searchBox;
 }
 
-- (CGFloat)leftSubviewWidth
-{
+- (CGFloat)leftSubviewWidth {
     return searchBoxFirst ? SEARCHBOX_WIDTH : FILESBOX_WIDTH;
 }
 
-- (CGFloat)middleSubviewWidth
-{
+- (CGFloat)middleSubviewWidth {
     return TABVIEW_WIDTH;
 }
 
-- (CGFloat)rightSubviewWidth
-{
+- (CGFloat)rightSubviewWidth {
     return searchBoxFirst ? FILESBOX_WIDTH : SEARCHBOX_WIDTH;
 }
 
@@ -94,43 +87,25 @@
 
 - (void)splitView:(NSSplitView *)sender resizeSubviewsWithOldSize:(NSSize)oldSize {
     
-    if(![sender isEqual:splitView])
-    {
-        [sender adjustSubviews];
-        return;
-    }
-    
     const CGFloat mins[] = { [self leftSubviewWidth], [self middleSubviewWidth], [self rightSubviewWidth] };
+    const CGFloat splitViewHeight = [sender bounds].size.height;
     const CGFloat dividerThickness = [sender dividerThickness];
-
-    NSArray *subviews = [sender subviews];
-    
-	CGFloat delta = [sender bounds].size.width - [searchBox frame].size.width - [tabView frame].size.width -
-                    [filesBox frame].size.width - 2.0 * dividerThickness;
 	
-    for(NSUInteger i = 0; i < 3; ++i)
+    // Invoke default OS behavior
+    [sender adjustSubviews];
+    
+    CGFloat offset = 0;
+    for(NSUInteger i = 0; splitView == sender && i < 3; ++i)
     {
-		NSView* view = [[sender subviews] objectAtIndex:i];
-		NSSize size = NSMakeSize([view frame].size.width, [sender bounds].size.height);
-		
-        if (delta > 0 || size.width + delta >= mins[i])
+        NSView* subview = [[sender subviews] objectAtIndex:i];
+        NSRect viewFrame = [subview frame];
+        
+        if (viewFrame.size.width < mins[i])
         {
-            size.width += delta;
-            delta = 0;
+            [subview setFrameSize: NSMakeSize(mins[i], splitViewHeight)];
+            viewFrame = [subview frame];
         }
-        else if (delta < 0)
-        {
-            delta += size.width - mins[i];
-            size.width = mins[i];
-        }
-		
-		[view setFrameSize: size];
-	}
-		
-	CGFloat offset = 0;
-	for (NSView *subview in subviews)
-	{
-		NSRect viewFrame = [subview frame];
+        
 		[subview setFrameOrigin:NSMakePoint(offset, viewFrame.origin.y)];
         [subview setNeedsDisplay: YES];
 
